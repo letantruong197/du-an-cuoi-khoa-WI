@@ -46,8 +46,8 @@ let signin = document.getElementById("Sign-in")
 let signUpBtn = document.getElementById("sign-up")
 let errorMsg = document.getElementById("text-valid")
 function signup (){
+    event.preventDefault();
     location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/register.html");
-    location.reload()
 }
 signUpBtn.addEventListener("click",signup)
 function login() {
