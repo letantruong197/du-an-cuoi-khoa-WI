@@ -25,6 +25,7 @@ function login() {
             const user = userCredential.user;
             // ...
             console.log(`current user uid: ${user.uid}`)
+            localStorage.setItem("uid",user.uid)
         })
         .catch((error) => {
             const errorCode = error.code;
