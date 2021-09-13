@@ -1,0 +1,112 @@
+body{
+  background-image: url(./img/110256579-hand-drawn-vector-illustration-back-to-school-background-sketch-design-elements-education-study-teac.jpg);
+}
+
+
+
+.navbar{
+    border-color: black;
+    display: flex;
+    flex: 8;
+    flex-direction: row;
+    height: 120px;
+    border-style: double;
+    margin-top: 25px;
+    border-width: thick;
+}
+.navbar_img{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navbar_img > img{
+    width: 100px;
+}
+.navbar_kvt{
+    flex: 6;
+}
+.navbar_kvt_p{
+    display: flex;
+    justify-content: center;
+}
+.navbar_kvt_p > h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navbar_kvt_p > h3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: lighter;
+    padding-left: 100px;
+    text-shadow: 2px 2px;
+    font-style: oblique;
+    color: black;
+    font-weight:400;
+}
+.navbar_logout{
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn btn-outline-success_a {
+    text-decoration: none;
+    background-color:white;
+}
+
+
+
+.ds{
+  text-align: center;
+  padding-top: 20px;
+  letter-spacing: 3px;
+  border-style: solid;
+  border-width: thick;
+  margin-top: 120px;
+  height: 100px;
+}
+
+
+
+.container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.container_box{
+  height: 100px;
+  width: 150px;
+  border-style:solid;
+  border-color: black;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 30px;
+  border-width: thick;
+}
+.container_box_content{
+  display: flex;
+  padding-top: 28px;
+  justify-content: center;
+}
+.container_box_content > a{
+  text-decoration: none;
+  color: black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
