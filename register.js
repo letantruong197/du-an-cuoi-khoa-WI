@@ -37,4 +37,7 @@ function signup() {
         errorMsg.innerHTML = "Please check your password and re-password"
     }
 }
+function redirectToSignIn(){
+    location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/login.html")
+}
 signUp.addEventListener("click", signup)
