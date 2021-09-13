@@ -243,3 +243,9 @@ img{
     bottom: -5.5rem;
   }
 }
+#googleLogin{
+  cursor: pointer;
+}
+#text-valid{
+  margin-bottom: -1rem;
+}

@@ -8,9 +8,8 @@ const firebaseConfig = {
     measurementId: "G-BGTYEFDP5Y"
 };
 firebase.initializeApp(firebaseConfig)
-firebase.auth.GoogleAuthProvider();
+var provider = new firebase.auth.GoogleAuthProvider();
 function googleLogin(){
-    event.preventDefault()
     firebase.auth()
       .signInWithPopup(provider)
       .then((result) => {
@@ -38,13 +37,14 @@ let email = document.getElementById("email")
 let password = document.getElementById("password")
 let signin = document.getElementById("Sign-in")
 let signUpBtn = document.getElementById("sign-up")
+let errorMsg = document.getElementById("text-valid")
 function signup (){
     location.replace("register.html");
     location.reload()
 }
 signUpBtn.addEventListener("click",signup)
 function login() {
-    event.preventDefault();
+    // event.preventDefault();
     firebase.auth().signInWithEmailAndPassword(email.value, password.value)
         .then((userCredential) => {
             // Signed in
@@ -52,13 +52,17 @@ function login() {
             // ...
             console.log(`current user uid: ${user.uid}`)
             localStorage.setItem("uid",user.uid)
+            errorMsg.style.color = "green"
+            errorMsg.innerHTML = "Success"
         })
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
             console.log(errorCode, errorMessage,email)
+            errorMsg.style.color = "red"
+            errorMsg.innerHTML = errorCode
         });
 
 }
 signin.addEventListener("click", login)
-google.addEventListener("click",googleLogin())
+google.addEventListener("click",googleLogin)
