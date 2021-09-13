@@ -21,6 +21,10 @@ function googleLogin(){
         // The signed-in user info.
         var user = result.user;
         // ...
+        localStorage.setItem("uid",user.uid)
+        errorMsg.style.color = "green"
+        errorMsg.innerHTML = "Success"
+        setTimeout(location.replace = "https://letantruong197.github.io/du-an-cuoi-khoa-WI/",5000)
       }).catch((error) => {
         // Handle Errors here.
         var errorCode = error.code;
@@ -29,6 +33,9 @@ function googleLogin(){
         var email = error.email;
         // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
+        console.log(errorCode, errorMessage,email)
+        errorMsg.style.color = "red"
+        errorMsg.innerHTML = errorCode
         // ...
       });
 }
@@ -54,6 +61,7 @@ function login() {
             localStorage.setItem("uid",user.uid)
             errorMsg.style.color = "green"
             errorMsg.innerHTML = "Success"
+            setTimeout(location.replace = "https://letantruong197.github.io/du-an-cuoi-khoa-WI/",5000)
         })
         .catch((error) => {
             const errorCode = error.code;
