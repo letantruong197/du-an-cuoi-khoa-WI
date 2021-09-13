@@ -23,7 +23,7 @@ function signup() {
                 // ...
                 errorMsg.style.color = "green"
                 errorMsg.innerHTML = "Success"
-                setTimeout(location.replace("login.html"),5000)
+                setTimeout(location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI"),5000)
             })
             .catch((error) => {
                 var errorCode = error.code;
