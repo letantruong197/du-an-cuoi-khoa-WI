@@ -8,6 +8,32 @@ const firebaseConfig = {
     measurementId: "G-BGTYEFDP5Y"
 };
 firebase.initializeApp(firebaseConfig)
+firebase.auth.GoogleAuthProvider();
+function googleLogin(){
+    event.preventDefault()
+    firebase.auth()
+      .signInWithPopup(provider)
+      .then((result) => {
+        /** @type {firebase.auth.OAuthCredential} */
+        var credential = result.credential;
+    
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        var token = credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        // ...
+      }).catch((error) => {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+      });
+}
+let google = document.getElementById("googleLogin")
 let email = document.getElementById("email")
 let password = document.getElementById("password")
 let signin = document.getElementById("Sign-in")
@@ -35,4 +61,4 @@ function login() {
 
 }
 signin.addEventListener("click", login)
-
+google.addEventListener("click",googleLogin())
