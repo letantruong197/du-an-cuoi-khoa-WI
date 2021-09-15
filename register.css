@@ -88,6 +88,7 @@ img{
   box-shadow: 0 8px 20px rgba(35,0,77,.2);
   animation-duration: .4s;
   animation-name: animate-login;
+  margin-bottom: 5rem;
 }
 
 @keyframes animate-login{
