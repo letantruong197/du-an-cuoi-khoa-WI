@@ -198,7 +198,7 @@ img{
 /* ===== MEDIA QUERIES =====*/
 @media screen and (min-width: 576px){
   .login__forms{
-    width: 348px;
+    width: 370px;
     justify-self: center;
   }
 }
