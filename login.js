@@ -61,7 +61,7 @@ function login() {
             localStorage.setItem("uid",user.uid)
             errorMsg.style.color = "green"
             errorMsg.innerHTML = "Success"
-            setTimeout(location.replace = "https://letantruong197.github.io/du-an-cuoi-khoa-WI/",5000)
+            setTimeout(location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/"),5000)
         })
         .catch((error) => {
             const errorCode = error.code;
