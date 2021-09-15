@@ -75,21 +75,26 @@ function login() {
 }
 function getPwBack() {
     event.preventDefault()
-    firebase.auth().sendPasswordResetEmail(email)
-        .then(() => {
-            // Password reset email sent!
-            // ..
-            errorMsg.style.color = "green"
-            errorMsg.innerHTML = "Password reset email sent"
-        })
-        .catch((error) => {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            // ..
-            errorMsg.style.color = "red"
-            errorMsg.innerHTML = errorCode
-        });
+    if (!email.value) {
+        errorMsg.style.color = "red"
+        errorMsg.innerHTML = "Please type in your email"
+    } else {
+        firebase.auth().sendPasswordResetEmail(email.value)
+            .then(() => {
+                // Password reset email sent!
+                // ..
+                errorMsg.style.color = "green"
+                errorMsg.innerHTML = "Password reset email sent"
+            })
+            .catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // ..
+                errorMsg.style.color = "red"
+                errorMsg.innerHTML = errorCode
+            });
 
+    }
 }
 signin.addEventListener("click", login)
 google.addEventListener("click", googleLogin)
