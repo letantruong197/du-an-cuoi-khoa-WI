@@ -80,7 +80,7 @@ function getPwBack() {
             // Password reset email sent!
             // ..
             errorMsg.style.color = "green"
-            errorMsg.innerHTML = "Password reset sent to your Email"
+            errorMsg.innerHTML = "Password reset email sent"
         })
         .catch((error) => {
             var errorCode = error.code;
