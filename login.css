@@ -34,6 +34,7 @@ body{
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
   color: var(--first-color-dark);
+  min-height: 100vh;
 }
 
 h1{

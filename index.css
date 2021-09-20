@@ -1,18 +1,75 @@
-body{
-  background-image: url(./img/110256579-hand-drawn-vector-illustration-back-to-school-background-sketch-design-elements-education-study-teac.jpg);
+#page-container {
+  position: relative;
+  min-height: 100vh;
 }
 
+#content-wrap {
+  padding-bottom: 2.5rem;    /* Footer height */
+}
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
+.cool-link{
+  display: inline-block;
+  color:white;
+  text-decoration: none;
+  transition: 0.3s ease-in;
+  border-bottom: solid 2px black;
+}
+.navbar-contents{
+  width: 100%;
+}
+.navbar-contents a{
+  letter-spacing: 0.1em;
+}
+.navbar {
+  background-color: rgba(0, 0, 0, 0.699)
+}
 
+.navbar li {
+  display: inline-block;
+  text-decoration: none;
+}
 
-.navbar{
-    border-color: black;
-    display: flex;
-    flex: 8;
-    flex-direction: row;
-    height: 120px;
-    border-style: double;
-    margin-top: 25px;
-    border-width: thick;
+.navbar ul {
+  height: 50px;
+}
+
+.navbar li:not(:last-child) {
+  margin-right: 30px;
+}
+
+.active {
+  padding-left: 10px;
+}
+
+.navbar-contents li {
+  height: 100%;
+}
+footer{
+  clear: both;
+  position: relative;
+  min-height: 5px;
+  margin-top: -200px;
+}
+
+.navbar-contents li a {
+  height: 100%;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+.cool-link:hover {
+  border-bottom: solid 5px black;
+  color: white;
 }
 .navbar_img{
     flex: 1;
@@ -65,17 +122,18 @@ body{
   letter-spacing: 3px;
   border-style: solid;
   border-width: thick;
-  margin-top: 120px;
+  margin-top: 80px;
   height: 100px;
 }
 
 
 
-.container{
+.container-fluid{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  padding-bottom: 30px;
 }
 .container_box{
   height: 100px;
@@ -96,17 +154,21 @@ body{
   text-decoration: none;
   color: black;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.text-center text-white{
+ padding-top: 10px;
+}
+.fab >img{
+  width: 4000px;
+  height: 2px;
+}
+.fab > img{
+  width: 20px;
+  height: 20px;
+}
+.footer{
+  background-color: wheat;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 5px;
+  margin-bottom: 0px;
+}
