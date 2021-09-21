@@ -13,9 +13,12 @@ let password = document.getElementById("password")
 let rePassword = document.getElementById("re-password")
 let errorMsg = document.getElementById("valid-text")
 let signUp = document.getElementById("signUp")
+let google = document.getElementById("googleLogin")
 function signup() {
-    if (password.value == rePassword.value) {
-      
+    if (email.value == "" || password.value == "" || rePassword.value == "") {
+        errorMsg.style.color = "red"
+        errorMsg.innerHTML = "Please type in your password and re-password"
+    } if (password.value == rePassword.value) {
         firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
             .then((userCredential) => {
                 // Signed in 
@@ -23,7 +26,7 @@ function signup() {
                 // ...
                 errorMsg.style.color = "green"
                 errorMsg.innerHTML = "Success"
-                setTimeout(location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI"),5000)
+                setTimeout(location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI"), 5000)
             })
             .catch((error) => {
                 var errorCode = error.code;
@@ -37,7 +40,39 @@ function signup() {
         errorMsg.innerHTML = "Please check your password and re-password"
     }
 }
-function redirectToSignIn(){
+var provider = new firebase.auth.GoogleAuthProvider();
+function googleLogin() {
+    firebase.auth()
+        .signInWithPopup(provider)
+        .then((result) => {
+            /** @type {firebase.auth.OAuthCredential} */
+            var credential = result.credential;
+
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            var token = credential.accessToken;
+            // The signed-in user info.
+            var user = result.user;
+            // ...
+            localStorage.setItem("uid", user.uid)
+            errorMsg.style.color = "green"
+            errorMsg.innerHTML = "Success"
+            setTimeout(location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/"), 5000)
+        }).catch((error) => {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // The email of the user's account used.
+            var email = error.email;
+            // The firebase.auth.AuthCredential type that was used.
+            var credential = error.credential;
+            console.log(errorCode, errorMessage, email)
+            errorMsg.style.color = "red"
+            errorMsg.innerHTML = errorCode
+            // ...
+        });
+}
+function redirectToSignIn() {
     location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/login.html")
 }
 signUp.addEventListener("click", signup)
+google.addEventListener("click", googleLogin)
