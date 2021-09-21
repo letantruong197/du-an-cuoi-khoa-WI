@@ -117,13 +117,9 @@ footer{
 
 
 .ds{
-  text-align: center;
-  padding-top: 20px;
-  letter-spacing: 3px;
-  border-style: solid;
-  border-width: thick;
-  margin-top: 80px;
-  height: 100px;
+  letter-spacing: 0.1em;
+  padding-left: 1.8vw;
+  margin-top: 2vh;
 }
 
 
@@ -131,7 +127,6 @@ footer{
 .container-fluid{
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
   padding-bottom: 30px;
 }
@@ -143,7 +138,11 @@ footer{
   margin-left: 50px;
   margin-right: 50px;
   margin-top: 30px;
-  border-width: thick;
+  border-width: 2px;
+}
+.container_box:hover{
+  background-color: gray;
+  transition: 0.2s ease-in;
 }
 .container_box_content{
   display: flex;

@@ -5,9 +5,11 @@ const firebaseConfig = {
     storageBucket: "cuoi-khoa-wi02.appspot.com",
     messagingSenderId: "783435565365",
     appId: "1:783435565365:web:f0624cdf7f9a531373e47c",
-    measurementId: "G-BGTYEFDP5Y"
+    measurementId: "G-BGTYEFDP5Y",
+    databaseURL : "https://cuoi-khoa-wi02-default-rtdb.asia-southeast1.firebasedatabase.app"
 };
-firebase.initializeApp(firebaseConfig)
+firebase.initializeApp(firebaseConfig);
+var database = firebase.database();
 var provider = new firebase.auth.GoogleAuthProvider();
 function googleLogin() {
     firebase.auth()
@@ -51,6 +53,11 @@ function signup() {
     location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/register.html");
 }
 signUpBtn.addEventListener("click", signup)
+function writeUserData(email,user) {
+        firebase.database().ref('users/' + user.uid).set({
+            email: email.value,
+        });
+    }
 function login() {
     if (email.value == "" || password == "") {
         errorMsg.style.color = "red"
@@ -66,7 +73,9 @@ function login() {
                 localStorage.setItem("uid", user.uid)
                 errorMsg.style.color = "green"
                 errorMsg.innerHTML = "Success"
-                setTimeout(location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/"), 5000)
+                //
+                writeUserData(email,user)
+                // setTimeout(location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/"), 5000)
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -101,6 +110,9 @@ function getPwBack() {
 
     }
 }
+
 signin.addEventListener("click", login)
+// signin.addEventListener("click",writeUserData)
 google.addEventListener("click", googleLogin)
 forgotPw.addEventListener("click", getPwBack)
+  

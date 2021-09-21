@@ -8,6 +8,7 @@ const firebaseConfig = {
     measurementId: "G-BGTYEFDP5Y"
 };
 firebase.initializeApp(firebaseConfig)
+var database = firebase.database();
 let email = document.getElementById("email")
 let password = document.getElementById("password")
 let rePassword = document.getElementById("re-password")
@@ -29,7 +30,7 @@ function signup() {
                 // ...
                 errorMsg.style.color = "green"
                 errorMsg.innerHTML = "Success"
-                setTimeout(location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI"), 5000)
+                setTimeout(location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/login.html"), 5000)
             })
             .catch((error) => {
                 var errorCode = error.code;
