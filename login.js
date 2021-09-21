@@ -52,26 +52,31 @@ function signup() {
 }
 signUpBtn.addEventListener("click", signup)
 function login() {
-    // event.preventDefault();
-    firebase.auth().signInWithEmailAndPassword(email.value, password.value)
-        .then((userCredential) => {
-            // Signed in
-            const user = userCredential.user;
-            // ...
-            console.log(`current user uid: ${user.uid}`)
-            localStorage.setItem("uid", user.uid)
-            errorMsg.style.color = "green"
-            errorMsg.innerHTML = "Success"
-            setTimeout(location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/"), 5000)
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode, errorMessage, email)
-            errorMsg.style.color = "red"
-            errorMsg.innerHTML = errorCode
-        });
+    if (email.value == "" || password == "") {
+        errorMsg.style.color = "red"
+        errorMsg.innerHTML = "Please type in your email or password"
+    } else {
+        event.preventDefault();
+        firebase.auth().signInWithEmailAndPassword(email.value, password.value)
+            .then((userCredential) => {
+                // Signed in
+                const user = userCredential.user;
+                // ...
+                console.log(`current user uid: ${user.uid}`)
+                localStorage.setItem("uid", user.uid)
+                errorMsg.style.color = "green"
+                errorMsg.innerHTML = "Success"
+                setTimeout(location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/"), 5000)
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode, errorMessage, email)
+                errorMsg.style.color = "red"
+                errorMsg.innerHTML = errorCode
+            });
 
+    }
 }
 function getPwBack() {
     event.preventDefault()

@@ -18,7 +18,10 @@ function signup() {
     if (email.value == "" || password.value == "" || rePassword.value == "") {
         errorMsg.style.color = "red"
         errorMsg.innerHTML = "Please type in your password and re-password"
-    } if (password.value == rePassword.value) {
+    } if (password.value !== rePassword.value) {
+        errorMsg.style.color = "red"
+        errorMsg.innerHTML = "Please check your password and re-password"
+    } else {
         firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
             .then((userCredential) => {
                 // Signed in 
@@ -35,9 +38,6 @@ function signup() {
                 errorMsg.innerHTML = errorCode
                 console.log(errorCode, errorMessage)
             });
-    } else {
-        errorMsg.style.color = "red"
-        errorMsg.innerHTML = "Please check your password and re-password"
     }
 }
 var provider = new firebase.auth.GoogleAuthProvider();
