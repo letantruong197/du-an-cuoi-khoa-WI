@@ -41,48 +41,53 @@ let edit = document.getElementById("editBtn")
 let list = document.getElementById("ds-border")
 let container = document.getElementById("container-classes")
 const dbRef = firebase.database().ref();
+
+
 let listClassContent = []
-function classLoad(){
-dbRef.child("users").child(currentUser).child('class').get().then((snapshot) => {
-    if (snapshot.exists()) {
-        console.log(snapshot.val());
-    } else {
-        console.log("No data available");
-    }
-    let snapshotValue = snapshot.val();
-    listClassContent.push(JSON.stringify(snapshotValue.classname))
-    localStorage.setItem("listClass", listClassContent)
-    let numberOfClass = JSON.parse(localStorage.getItem("listClass"))
-    for (let i = 0; i < numberOfClass.length; i++) {
-        let classDiv = document.createElement("div")
-        let classContainer = document.createElement("div")
-        classContainer.className = "container_box"
-        classDiv.className = "container_box_content"
-        let className = document.createElement("h3")
-        let classNameValue = document.createTextNode(numberOfClass[i])
-        className.appendChild(classNameValue)
-        classDiv.appendChild(className)
-        classContainer.appendChild(classDiv)
-        container.appendChild(classContainer)
-    }
-}).catch((error) => {
-    console.error(error);
-});}
-classLoad()
 let addClass = document.getElementById("addClass")
-function addClasses() {
-    let addClassesName = document.getElementById("inputPassword6").value
-    if (addClassesName === null) {
-        alert("Please type in your new class name !")
-    } if (listClassContent.includes(addClassesName)) {
-        alert("You already had that class !")
-    } else {
-        listClassContent.push(addClassesName)
-        dbRef.child("users").child(currentUser).child('class').update({
-            classname: listClassContent,
-        });
-        classLoad();
-        addClassesName = ""
-    }
+
+
+function classLoad() {
+    dbRef.child("users").child(currentUser).child('class').get().then((snapshot) => {
+        if(snapshot.exists()){
+        console.log(snapshot.val())
+        let snapshotValue = snapshot.val();
+        localStorage.setItem("listClass", JSON.stringify(snapshotValue))
+        localStorage.setItem("nameLength",snapshotValue.classname.length)
+        let numberOfClass = JSON.parse(localStorage.getItem("listClass"))
+        for (let i = 0; i < snapshotValue.classname.length; i++) {
+            container.innerHTML += `<div class="container_box"><div class="container_box_content"><h3>${numberOfClass.classname[i].name}</h3></div></div>`
+        }
+    }}).catch((error) => {
+        console.error(error);
+    });
 }
+if (localStorage.getItem("listClass")) {
+    classLoad()
+}
+let addClassesName = document.getElementById("inputPassword6")
+function addClasses() {
+    let classObj = {}
+    dbRef.child("users").child(currentUser).child('class').get().then((snapshot) => {
+        if (snapshot.exists()) {
+            classObj.name = addClassesName.value
+            listClassContent.push(classObj)
+            localStorage.setItem("listClass", JSON.stringify(listClassContent))
+            dbRef.child("users").child(currentUser).child('class').update({
+                classname: JSON.parse(localStorage.getItem("listClass")),
+            });
+            let snapshotValue = snapshot.val();
+            console.log(snapshotValue.classname.length)
+            container.innerHTML += `<div class="container_box"><div class="container_box_content"><h3>${addClassesName.value}</h3></div></div>`
+        } else {
+            firebase.database().ref('users/'+ currentUser + '/class'  ).set({
+                classname:[{name: addClassesName.value}]
+              });
+              container.innerHTML += `<div class="container_box"><div class="container_box_content"><h3>${addClassesName.value}</h3></div></div>`
+        }
+      }).catch((error) => {
+        console.error(error);
+      });  
+}
+
 addClass.addEventListener("click", addClasses)
