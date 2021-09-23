@@ -29,83 +29,20 @@
         </div>
     </div>
     <h1 class="ds">Classes</h1>
-    <div class="container-fluid">
-        <div class="container_box">
-            <div class="container_box_content">
-                <a>
-                    <h3>A1</h3>
-                </a>
-            </div>
+    <button id="addClass" type="button" class="btn btn-primary">Add class</button>
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+          <input type="text" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
         </div>
+        <div class="col-auto">
+          <span id="passwordHelpInline" class="form-text">
+            Type in your class name.
+          </span>
+        </div>
+      </div>
+    <div id="container-classes" class="container-fluid">
     </div>
-    <div class="editButton">
-        <button id="avg" type="button" class="btn btn-primary">Add average score</button>
-        <button id="editBtn" type="button" class="btn btn-primary">Edit</button>
-    </div>
 
-    <div class="ds-border">
-        <div class="ds-border_stt">
-            <div class="ds-border_stt_contain">
-                <h4 class="STT">STT</h4>
-            </div>
-            <div class="ds-border_stt_contain">
-                <h4>1</h4>
-            </div>
-            <div class="ds-border_stt_contain">
-                <h4>2</h4>
-            </div>
-            <div class="ds-border_stt_contain">
-                <h4>3</h4>
-            </div>
-        </div>
-
-        <div class="ds-border_ten">
-            <div class="ds-border_ten_contain">
-                <h4>ten</h4>
-            </div>
-            <div class="ds-border_ten_contain">
-                <h4>a</h4>
-            </div>
-            <div class="ds-border_ten_contain">
-                <h4>b</h4>
-            </div>
-            <div class="ds-border_ten_contain">
-                <h4>c</h4>
-            </div>
-        </div>
-
-        <div class="ds-border-stt">
-            <div class="ds-border_stt_contain_subject">
-                <h4>toan</h4>
-            </div>
-            <div class="ds-border_stt_contain">
-                <h4>9</h4>
-            </div>
-            <div class="ds-border_stt_contain">
-                <h4>8</h4>
-            </div>
-            <div class="ds-border_stt_contain">
-                <h4>7</h4>
-            </div>
-        </div>
-
-        
-        <div class="ds-border-stt">
-            <div class="ds-border_stt_contain_subject">
-                <h4>van</h4>
-            </div>
-            <div class="ds-border_stt_contain">
-                <h4>9</h4>
-            </div>
-            <div class="ds-border_stt_contain">
-                <h4>8</h4>
-            </div>
-            <div class="ds-border_stt_contain">
-                <h4>7</h4>
-            </div>
-        </div>
-
-    </div>
     <div id="page-container">
         <div id="content-wrap">
             <div class="footer">
@@ -129,7 +66,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script src="https://kit.fontawesome.com/0db7370eab.js" crossorigin="anonymous"></script>
-    <script src="index.js"></script>
+    <script src="./classSelect.js"></script>
 </body>
 
 </html>

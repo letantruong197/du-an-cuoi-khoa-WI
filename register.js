@@ -5,7 +5,8 @@ const firebaseConfig = {
     storageBucket: "cuoi-khoa-wi02.appspot.com",
     messagingSenderId: "783435565365",
     appId: "1:783435565365:web:f0624cdf7f9a531373e47c",
-    measurementId: "G-BGTYEFDP5Y"
+    measurementId: "G-BGTYEFDP5Y",
+    databaseURL : "https://cuoi-khoa-wi02-default-rtdb.asia-southeast1.firebasedatabase.app"
 };
 firebase.initializeApp(firebaseConfig)
 var database = firebase.database();
