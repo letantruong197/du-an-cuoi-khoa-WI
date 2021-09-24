@@ -28,12 +28,9 @@ function googleLogin() {
             errorMsg.innerHTML = "Success"
             setTimeout(location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/"), 5000)
         }).catch((error) => {
-            // Handle Errors here.
             var errorCode = error.code;
             var errorMessage = error.message;
-            // The email of the user's account used.
             var email = error.email;
-            // The firebase.auth.AuthCredential type that was used.
             var credential = error.credential;
             console.log(errorCode, errorMessage, email)
             errorMsg.style.color = "red"
@@ -53,11 +50,11 @@ function signup() {
     location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/register.html");
 }
 signUpBtn.addEventListener("click", signup)
-function writeUserData(emailValue,user) {
-        firebase.database().ref('users/' + user.uid).set({
-            email: emailValue,
-        });
-    }
+// function writeUserData(emailValue,user) {
+//         firebase.database().ref('users/' + user.uid).set({
+//             email: emailValue,
+//         });
+//     }
 function login() {
     if (email.value == "" || password == "") {
         errorMsg.style.color = "red"
@@ -75,7 +72,7 @@ function login() {
                 errorMsg.innerHTML = "Success"
                 //
                 writeUserData(user.email,user)
-                // setTimeout(location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/"), 5000)
+                setTimeout(location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/"), 5000)
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -95,8 +92,6 @@ function getPwBack() {
     } else {
         firebase.auth().sendPasswordResetEmail(email.value)
             .then(() => {
-                // Password reset email sent!
-                // ..
                 errorMsg.style.color = "green"
                 errorMsg.innerHTML = "Password reset email sent"
             })
