@@ -126,7 +126,7 @@ footer{
 }
 #addClass{
   letter-spacing: 0.1em;
-  margin: 20px 0 0 1.8vw;
+  margin: 20px 0 0 0.7vw;
 }
 
 
@@ -242,5 +242,9 @@ margin-right: 10px;
 }
 #saveClass{
   letter-spacing: 0.1em;
-  margin: 20px 0 0 1vw;
+  margin: 20px 0 0 5px;
+}
+#refresh{
+  letter-spacing: 0.1em;
+  margin: 20px 0 0 5px;
 }

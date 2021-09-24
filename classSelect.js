@@ -17,14 +17,15 @@ let container = document.getElementById("container-classes")
 let addClass = document.getElementById("addClass")
 let keyString = localStorage.getItem('key')
 const dbRef = firebase.database().ref();
-if (!currentUser){
+let refresh = document.getElementById("refresh")
+if (!currentUser) {
     location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/login.html")
 }
 let logoutBtn = document.getElementById("logout")
 function logout() {
     event.preventDefault()
     localStorage.removeItem("uid")
-    setTimeout(location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/login.html"),3000)
+    setTimeout(location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/login.html"), 3000)
 }
 if (localStorage.getItem("lastListClass") === null) {
     localStorage.setItem("listClass", JSON.stringify([]))
@@ -57,23 +58,21 @@ function classLoad() {
     }
 }
 function addClasses() {
-    const userExists = listClassContent.classname.some(user => user.name === addClassesName.value);
+    const userExists = listClassContent.classname?.some(user => user.name === addClassesName.value);
     if (userExists) {
         inputHelp.style.color = "red"
         inputHelp.innerHTML = "You already had that class"
         return new Error({ error: 'User exists' })
-    }else{
-    let classObj = {}
-    classObj.name = addClassesName.value
-    classContent.push(classObj)
-    localStorage.setItem("lastListClass", JSON.stringify(classContent))
-    container.innerHTML += `<div class="container_box"><div onclick="currentClass()" class="container_box_content"><h3 id="classname">${addClassesName.value}</h3></div></div>`
-    addClassesName.value = ""
+    } else {
+        let classObj = {}
+        classObj.name = addClassesName.value
+        classContent.push(classObj)
+        localStorage.setItem("lastListClass", JSON.stringify(classContent))
+        container.innerHTML += `<div class="container_box"><div onclick="currentClass()" class="container_box_content"><h3 id="classname">${addClassesName.value}</h3></div></div>`
+        addClassesName.value = ""
+    }
 }
-}
-
-
-    classLoad()
+classLoad()
 
 function saveClass() {
     event.preventDefault();
@@ -83,6 +82,7 @@ function saveClass() {
     );
     let key = newOrderRef.key
     localStorage.setItem("key", key)
+    setTimeout(location.reload(),3000)
 }
 function currentClass() {
     if (localStorage.getItem("container")) {
@@ -92,6 +92,13 @@ function currentClass() {
         location.replace("https://github.com/letantruong197/du-an-cuoi-khoa-WI/index.html")
     }
 }
+// function refreshClass(){
+//     container.innerHTML =""
+//     for (let i = 0; i < listClassContent.classname.length; i++) {
+//         container.innerHTML += `<div onclick="currentClass()" class="container_box"><div class="container_box_content"><h3 id="classname">${listClassContent.classname[i].name}</h3></div></div>`
+//     }
+// }
 
 addClass.addEventListener("click", addClasses)
 save.addEventListener("click", saveClass)
+// refresh.addEventListener("click",refreshClass)
