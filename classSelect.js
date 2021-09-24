@@ -11,9 +11,15 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig)
 var database = firebase.database();
 let currentUser = localStorage.getItem("uid")
-// if (!currentUser){
-//     location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/login.html")
-// }
+let edit = document.getElementById("editBtn")
+let list = document.getElementById("ds-border")
+let container = document.getElementById("container-classes")
+let addClass = document.getElementById("addClass")
+let keyString = localStorage.getItem('key')
+const dbRef = firebase.database().ref();
+if (!currentUser){
+    location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/login.html")
+}
 let logoutBtn = document.getElementById("logout")
 function logout() {
     event.preventDefault()
@@ -37,57 +43,72 @@ let addAGS = `
 </div>
 </div>
 `
-let edit = document.getElementById("editBtn")
-let list = document.getElementById("ds-border")
-let container = document.getElementById("container-classes")
-const dbRef = firebase.database().ref();
-
-
-let listClassContent = []
-let addClass = document.getElementById("addClass")
-
-
-function classLoad() {
-    dbRef.child("users").child(currentUser).child('class').get().then((snapshot) => {
-        if(snapshot.exists()){
-        console.log(snapshot.val())
-        let snapshotValue = snapshot.val();
-        localStorage.setItem("listClass", JSON.stringify(snapshotValue))
-        localStorage.setItem("nameLength",snapshotValue.classname.length)
-        let numberOfClass = JSON.parse(localStorage.getItem("listClass"))
-        for (let i = 0; i < snapshotValue.classname.length; i++) {
-            container.innerHTML += `<div class="container_box"><div class="container_box_content"><h3>${numberOfClass.classname[i].name}</h3></div></div>`
-        }
-    }}).catch((error) => {
-        console.error(error);
-    });
+if (localStorage.getItem("lastListClass") === null) {
+    localStorage.setItem("listClass", JSON.stringify([]))
+    localStorage.setItem("lastListClass", JSON.stringify([]))
 }
+let addClassesName = document.getElementById("inputPassword6")
+let classNameBtn = document.getElementById("classname")
+let save = document.getElementById("saveClass")
+let inputHelp = document.getElementById("passwordHelpInline")
+let classContent = JSON.parse(localStorage.getItem("lastListClass"))
+let listClassContent = JSON.parse(localStorage.getItem("listClass"))
+function classLoad() {
+    if (keyString !== null) {
+        dbRef.child("users").child(currentUser).child('class').child(keyString).get().then((snapshot) => {
+            if (snapshot.exists()) {
+                container.innerHTML = ""
+                let snapshotValue = snapshot.val();
+                localStorage.setItem("listClass", JSON.stringify(snapshotValue))
+                localStorage.setItem('lastListClass', JSON.stringify(snapshotValue.classname))
+                let listClassContent = JSON.parse(localStorage.getItem("listClass"))
+                for (let i = 0; i < listClassContent.classname.length; i++) {
+                    container.innerHTML += `<div onclick="currentClass()" class="container_box"><div class="container_box_content"><h3 id="classname">${listClassContent.classname[i].name}</h3></div></div>`
+                }
+                localStorage.setItem("container", true)
+            }
+        }).catch((error) => {
+            console.error(error);
+            localStorage.setItem("container", false)
+        });
+    }
+}
+function addClasses() {
+    const userExists = listClassContent.classname.some(user => user.name === addClassesName.value);
+    if (userExists) {
+        inputHelp.style.color = "red"
+        inputHelp.innerHTML = "You already had that class"
+        return new Error({ error: 'User exists' })
+    }else{
+    let classObj = {}
+    classObj.name = addClassesName.value
+    classContent.push(classObj)
+    localStorage.setItem("lastListClass", JSON.stringify(classContent))
+    container.innerHTML += `<div class="container_box"><div onclick="currentClass()" class="container_box_content"><h3 id="classname">${addClassesName.value}</h3></div></div>`
+    addClassesName.value = ""
+}
+}
+
 if (localStorage.getItem("listClass")) {
     classLoad()
 }
-let addClassesName = document.getElementById("inputPassword6")
-function addClasses() {
-    let classObj = {}
-    dbRef.child("users").child(currentUser).child('class').get().then((snapshot) => {
-        if (snapshot.exists()) {
-            classObj.name = addClassesName.value
-            listClassContent.push(classObj)
-            localStorage.setItem("listClass", JSON.stringify(listClassContent))
-            dbRef.child("users").child(currentUser).child('class').update({
-                classname: JSON.parse(localStorage.getItem("listClass")),
-            });
-            let snapshotValue = snapshot.val();
-            console.log(snapshotValue.classname.length)
-            container.innerHTML += `<div class="container_box"><div class="container_box_content"><h3>${addClassesName.value}</h3></div></div>`
-        } else {
-            firebase.database().ref('users/'+ currentUser + '/class'  ).set({
-                classname:[{name: addClassesName.value}]
-              });
-              container.innerHTML += `<div class="container_box"><div class="container_box_content"><h3>${addClassesName.value}</h3></div></div>`
-        }
-      }).catch((error) => {
-        console.error(error);
-      });  
+function saveClass() {
+    event.preventDefault();
+    let newOrderRef = dbRef.child("users").child(currentUser).child('class').push({
+        classname: classContent
+    }
+    );
+    let key = newOrderRef.key
+    localStorage.setItem("key", key)
+}
+function currentClass() {
+    if (localStorage.getItem("container")) {
+        event.preventDefault();
+        let currentClass = document.getElementById("classname").textContent
+        localStorage.setItem("currentClass", currentClass)
+        location.replace("https://github.com/letantruong197/du-an-cuoi-khoa-WI/index.html")
+    }
 }
 
 addClass.addEventListener("click", addClasses)
+save.addEventListener("click", saveClass)

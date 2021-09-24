@@ -10,22 +10,39 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig)
 var database = firebase.database();
-let currentUser = localStorage.getItem("uid")
- if (!currentUser){
-     location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/login.html")
- }
+// let currentUser = localStorage.getItem("uid")
+// if (!currentUser){
+//     location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/login.html")
+// }
 let logoutBtn = document.getElementById("logout")
 function logout(){
     event.preventDefault()
     localStorage.removeItem("uid")
-    setTimeout(location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/login.html"),3000)
+    // setTimeout(location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/login.html"),3000)
 }
 let edit = document.getElementById("editBtn")
+let addAGS = `       
+<div class="ds-border-stt">
+<div class="ds-border_stt_contain">
+    <h4>Average Score</h4>
+</div>
+<div class="ds-border_stt_contain">
+    <h4>9</h4>
+</div>
+<div class="ds-border_stt_contain">
+    <h4>8</h4>
+</div>
+<div class="ds-border_stt_contain">
+    <h4>7</h4>
+</div>
+</div>
+</div>
+`
 let list = document.getElementById("ds-border")
 let changeClass = document.getElementById("changeClass")
 
 function redirectToClassSelect (){
-    location.replace("https://github.com/letantruong197/du-an-cuoi-khoa-WI/classSelect.html")
+    location.replace("classSelect.html")
 }
 let localCurrentClass = localStorage.getItem("currentClass")
 function checkCurrentClass(){
@@ -38,12 +55,10 @@ function checkCurrentClass(){
     </div>
 </div>`
 }
-function updateClass(){
-    event.preventDefault()
-    location.replace("https://github.com/letantruong197/du-an-cuoi-khoa-WI/UpdateClass.html")
-}
 checkCurrentClass();
-edit.addEventListener("click",updateClass)
 
 
+function editClass(){
+    
+}
 
