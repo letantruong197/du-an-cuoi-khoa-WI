@@ -24,25 +24,8 @@ let logoutBtn = document.getElementById("logout")
 function logout() {
     event.preventDefault()
     localStorage.removeItem("uid")
-    // setTimeout(location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/login.html"),3000)
+    setTimeout(location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/login.html"),3000)
 }
-let addAGS = `       
-<div class="ds-border-stt">
-<div class="ds-border_stt_contain">
-<h4>Average Score</h4>
-</div>
-<div class="ds-border_stt_contain">
-<h4>9</h4>
-</div>
-<div class="ds-border_stt_contain">
-<h4>8</h4>
-</div>
-<div class="ds-border_stt_contain">
-<h4>7</h4>
-</div>
-</div>
-</div>
-`
 if (localStorage.getItem("lastListClass") === null) {
     localStorage.setItem("listClass", JSON.stringify([]))
     localStorage.setItem("lastListClass", JSON.stringify([]))
