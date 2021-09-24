@@ -50,11 +50,11 @@ function signup() {
     location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/register.html");
 }
 signUpBtn.addEventListener("click", signup)
-// function writeUserData(emailValue,user) {
-//         firebase.database().ref('users/' + user.uid).set({
-//             email: emailValue,
-//         });
-//     }
+function writeUserData(emailValue,user) {
+        firebase.database().ref('users/' + user.uid).set({
+            email: emailValue,
+        });
+    }
 function login() {
     if (email.value == "" || password == "") {
         errorMsg.style.color = "red"
@@ -107,7 +107,7 @@ function getPwBack() {
 }
 
 signin.addEventListener("click", login)
-// signin.addEventListener("click",writeUserData)
+signin.addEventListener("click",writeUserData)
 google.addEventListener("click", googleLogin)
 forgotPw.addEventListener("click", getPwBack)
   
