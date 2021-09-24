@@ -72,9 +72,9 @@ function addClasses() {
 }
 }
 
-if (localStorage.getItem("listClass")) {
+
     classLoad()
-}
+
 function saveClass() {
     event.preventDefault();
     let newOrderRef = dbRef.child("users").child(currentUser).child('class').push({
