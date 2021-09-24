@@ -26,7 +26,7 @@ function googleLogin() {
             localStorage.setItem("uid", user.uid)
             errorMsg.style.color = "green"
             errorMsg.innerHTML = "Success"
-            setTimeout(location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/"), 5000)
+            setTimeout(location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/classSelect.html"), 5000)
         }).catch((error) => {
             var errorCode = error.code;
             var errorMessage = error.message;
@@ -72,7 +72,7 @@ function login() {
                 errorMsg.innerHTML = "Success"
                 //
                 writeUserData(user.email,user)
-                setTimeout(location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/"), 5000)
+                setTimeout(location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/classSelect.html"), 5000)
             })
             .catch((error) => {
                 const errorCode = error.code;
