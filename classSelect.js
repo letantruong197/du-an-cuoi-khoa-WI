@@ -89,7 +89,7 @@ function currentClass() {
         event.preventDefault();
         let currentClass = document.getElementById("classname").textContent
         localStorage.setItem("currentClass", currentClass)
-        location.replace("https://github.com/letantruong197/du-an-cuoi-khoa-WI/index.html")
+        location.replace("https://github.com/letantruong197/du-an-cuoi-khoa-WI")
     }
 }
 // function refreshClass(){
