@@ -21,98 +21,30 @@
     <div class="navbar">
         <div class="navbar-contents">
             <ul>
-                <li><a class="cool-link" href="letantruong197.github.io/du-an-cuoi-khoa-WI/">HOME</a></li>
-                <li><a class="cool-link" id="changeClass" onclick="redirectToClassSelect()">CHANGE CLASS</a></li>
-                <li><a class="cool-link" href="#page-container">ABOUT US</a></li>
+                <li><a class="cool-link" href="letantruong197.github.io/du-an-cuoi-khoa-WI">HOME</a></li>
+                <li><a class="cool-link" href="#contact-us">ABOUT US</a></li>
                 <li onclick="logout()" style="float: right;padding-right:30px"><a class="cool-link"
                         style="cursor:pointer">Sign Out</a></li>
             </ul>
         </div>
     </div>
     <h1 class="ds">Classes</h1>
-    <div id="container-fluid" class="container-fluid">
+    <button id="addClass" type="button" class="btn btn-primary">Add class</button>
+    <button id="saveClass" type="button" class="btn btn-primary">Save</button>
+    <!-- <button id="refresh" type="button" class="btn btn-primary">Refresh</button> -->
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+          <input type="text" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+        </div>
+        <div class="col-auto">
+          <span id="passwordHelpInline" class="form-text">
+            Type in your class name.
+          </span>
+        </div>
+      </div>
+    <div id="container-classes" class="container-fluid">
     </div>
-    <div class="editButton">
-        <button id="editBtn" type="button" class="btn btn-primary">Edit</button>
-    </div>
 
-    <div class="ds-border">
-        <div class="ds-border_stt">
-            <div class="ds-border_stt_contain">
-                <h4 class="STT">STT</h4>
-            </div>
-            <div class="ds-border_stt_contain">
-                <h4>1</h4>
-            </div>
-            <div class="ds-border_stt_contain">
-                <h4>2</h4>
-            </div>
-            <div class="ds-border_stt_contain">
-                <h4>3</h4>
-            </div>
-        </div>
-        <div class="ds-border-stt">
-            <div class="ds-border_stt_contain_subject">
-                <h4>Ten</h4>
-            </div>
-            <div class="ds-border_stt_contain">
-                <h4>Nguyen Van A</h4>
-            </div>
-            <div class="ds-border_stt_contain">
-                <h4>Nguyen Van B</h4>
-            </div>
-            <div class="ds-border_stt_contain">
-                <h4>Nguyen Van C</h4>
-            </div>
-        </div>
-
-        <div class="ds-border-stt">
-            <div class="ds-border_stt_contain_subject">
-                <h4>Toan</h4>
-            </div>
-            <div class="ds-border_stt_contain">
-                <h4>9</h4>
-            </div>
-            <div class="ds-border_stt_contain">
-                <h4>7</h4>
-            </div>
-            <div class="ds-border_stt_contain">
-                <h4>8.25</h4>
-            </div>
-        </div>
-
-        <div class="ds-border-stt">
-            <div class="ds-border_stt_contain_subject">
-                <h4>Van</h4>
-            </div>
-            <div class="ds-border_stt_contain">
-                <h4>9</h4>
-            </div>
-            <div class="ds-border_stt_contain">
-                <h4>8.5</h4>
-            </div>
-            <div class="ds-border_stt_contain">
-                <h4>7</h4>
-            </div>
-        </div>
-
-        <div class="ds-border-stt">
-            <div class="ds-border_stt_contain_subject">
-                <h4>Anh</h4>
-            </div>
-            <div class="ds-border_stt_contain">
-                <h4>9</h4>
-            </div>
-            <div class="ds-border_stt_contain">
-                <h4>6</h4>
-            </div>
-            <div class="ds-border_stt_contain">
-                <h4>7</h4>
-            </div>
-        </div>
-
-
-    </div>
     <div id="page-container">
         <div id="content-wrap">
             <div class="footer">
