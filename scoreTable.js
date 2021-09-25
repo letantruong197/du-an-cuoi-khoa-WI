@@ -25,7 +25,7 @@ let list = document.getElementById("ds-border")
 let changeClass = document.getElementById("changeClass")
 
 function redirectToClassSelect (){
-    location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/classSelect.html")
+    location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/index.html")
 }
 let localCurrentClass = localStorage.getItem("currentClass")
 function checkCurrentClass(){
