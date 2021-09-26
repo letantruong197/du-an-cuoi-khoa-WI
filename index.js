@@ -74,7 +74,7 @@ function addClasses() {
         addClassesName.value = ""
     }
 }
-classLoad()
+
 
 function saveClass() {
     event.preventDefault();
@@ -103,4 +103,5 @@ function currentClass() {
 
 addClass.addEventListener("click", addClasses)
 save.addEventListener("click", saveClass)
+setTimeout(classLoad(),2000)
 // refresh.addEventListener("click",refreshClass)
