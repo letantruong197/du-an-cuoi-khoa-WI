@@ -26,6 +26,8 @@ function logout() {
     event.preventDefault()
     localStorage.removeItem("uid")
     setTimeout(location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/login.html"), 3000)
+    localStorage.removeItem("lastListClass")
+    localStorage.removeItem("listClass")
 }
 if (localStorage.getItem("lastListClass") === null) {
     localStorage.setItem("listClass", JSON.stringify([]))
