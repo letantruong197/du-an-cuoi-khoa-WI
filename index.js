@@ -49,8 +49,9 @@ function classLoad() {
                 localStorage.setItem('lastListClass', JSON.stringify(snapshotValue.classname))
                 let listClassContent = JSON.parse(localStorage.getItem("listClass"))
                 for (let i = 0; i < listClassContent.classname.length; i++) {
-                    container.innerHTML += `<div onclick="currentClass()" class="container_box"><div class="container_box_content"><h3 id="classname">${listClassContent.classname[i].name}</h3></div></div>`
-                }
+                    if(listClassContent.classname[i] !== null){
+                    container.innerHTML += `<div onclick="currentClass()" class="container_box"><div class="container_box_content"><h3 id="${i}">${listClassContent.classname[i].name}</h3></div></div>`
+                }}
                 localStorage.setItem("container", true)
             }
         }).catch((error) => {
@@ -60,8 +61,17 @@ function classLoad() {
     }
 }
 function addClasses() {
-    const userExists = listClassContent.classname?.some(user => user.name === addClassesName.value);
-    if (userExists) {
+    for(i=0;i<listClassContent.classname.length;i++){
+        if(listClassContent.classname[i] !== null){
+        const userExists = listClassContent.classname?.some(user => user.name === addClassesName.value);
+        if (userExists) {
+            localStorage.setItem("userExists",true)
+        } else {
+            localStorage.setItem("userExists",false)
+        }
+    }
+}
+    if (localStorage.getItem("userExists")==true) {
         inputHelp.style.color = "red"
         inputHelp.innerHTML = "You already had that class"
         return new Error({ error: 'User exists' })
@@ -93,6 +103,11 @@ function currentClass() {
         localStorage.setItem("currentClass", currentClass)
         location.replace("https://letantruong197.github.io/du-an-cuoi-khoa-WI/scoreTable.html")
     }
+}
+function deleteClass(){
+    let idClass = prompt("Chọn thứ tự lớp mà bạn muốn xóa đếm từ trái sang phải")
+    let removeClass =  dbRef.child("users").child(currentUser).child('class').child(keyString).child('classname').child(parseInt(idClass)-1)
+    removeClass.remove();
 }
 // function refreshClass(){
 //     container.innerHTML =""
